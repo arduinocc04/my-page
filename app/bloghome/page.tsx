@@ -3,7 +3,7 @@ import {PostProps, getAllPostInfos} from './post'
 function PostThumbnail({post_info} : PostProps) {
     const {_id, title, summary, thumbnail_src, url, date} = post_info;
     return (
-        <div className=''>
+        <div key={_id}>
             <a className="" href={url}>
                 <div className='relative demo-viewport'>
                     <div className='absolute inset-0 rounded-lg bg-gray-700 dark:bg-gray-300 -z-10'></div>
