@@ -48,7 +48,7 @@ export function getPostInfoBySlug(slug: string, fields: string[] = []) {
             items[field] = `/blog/${real_slug}`;
         }
         else if(typeof data[field] !== 'undefined') {
-            items[field] = data[field];
+            items[field as keyof PostInfo] = data[field];
         }
     });
     return items;
