@@ -3,7 +3,7 @@ import {PostProps, getAllPostInfos} from './post'
 function PostThumbnail({post_info} : PostProps) {
     const {_id, title, summary, thumbnail_src, url, date} = post_info;
     return (
-        <div key={_id}>
+        <div className=''>
             <a className="" href={url}>
                 <div className='relative demo-viewport'>
                     <div className='absolute inset-0 rounded-lg bg-gray-700 dark:bg-gray-300 -z-10'></div>
@@ -47,7 +47,7 @@ export default function Home() {
                 <div className="mx-auto max-w-screen-xl">
                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
                         {post_thumbnails.map((post_thumbnail) => (
-                            <PostThumbnail post_info={post_thumbnail}/>
+                            <PostThumbnail key={post_thumbnail._id}post_info={post_thumbnail}/>
                         ))}
                     </div>
                 </div>
