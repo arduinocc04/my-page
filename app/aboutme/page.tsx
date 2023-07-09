@@ -16,7 +16,7 @@ export default function Home() {
                 </div>
                 <div className="mx-auto max-w-screen-xl">
                     <div>
-                        <h1 className="pl-4 text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-headline font-black">Conact</h1>
+                        <h1 className="pl-4 text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-headline font-black">Contact</h1>
                         <div className="pl-10">
                             <a className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-500 dark:text-gray-400" href="mailto:arduinocc04@gmail.com">arduinocc04@gmail.com</a>
                         </div>
