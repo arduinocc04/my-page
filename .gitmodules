@@ -1,3 +1,6 @@
 [submodule "showdown"]
 	path = showdown
 	url = https://github.com/arduinocc04/showdown.git
+[submodule "my-blog"]
+	path = my-blog
+	url = https://github.com/arduinocc04/my-blog.git
