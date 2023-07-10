@@ -1,5 +1,6 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
+import { lang_set_button } from './langchange'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -42,6 +43,7 @@ export default function RootLayout({
                 <p>Daniel Cho.</p>
               </p>
             </div>
+            {lang_set_button()}
           </div>
         </div>
       </footer>
