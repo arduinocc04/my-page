@@ -1,6 +1,6 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
-import { lang_set_button } from './langchange'
+import  Footer from '../component/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -35,18 +35,7 @@ export default function RootLayout({
         </div>
         {children}
       </body>
-      <footer className="bg-gray-900 text-gray-400">
-        <div className="mx-auto max-w-screen-xl">
-          <div className="px-10 sm:px-6 py-20">
-            <div>
-              <p className="text-gray-700 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400">
-                <p>Daniel Cho.</p>
-              </p>
-            </div>
-            {lang_set_button()}
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </html>
   )
 }

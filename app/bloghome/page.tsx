@@ -1,18 +1,19 @@
 import Image from 'next/image'
 import {PostProps, getAllPostInfos} from './post'
+
 function PostThumbnail({post_info} : PostProps) {
     const {_id, title, summary, thumbnail_src, url, date} = post_info;
     return (
         <div className=''>
             <a className="" href={url}>
                 <div className='relative demo-viewport'>
-                    <div className='absolute inset-0 rounded-lg bg-gray-700 dark:bg-gray-300 -z-10'></div>
+                    <div className='absolute inset-0 rounded-lg bg-gray-700 dark:bg-blue-300 -z-10'></div>
                     <div className='text-lg font-bold text-gray-200 dark:text-gray-700 p-2'>
                         <h1>{title}</h1>
                     </div>
-                    <div className='overflow-hidden p-2 transform -rotate-1 w-full aspect-video'>
+                    <div className='overflow-hidden p-2 w-full aspect-video'>
                         <Image
-                            className='rounded-lg '
+                            className=''
                             src={thumbnail_src}
                             alt={title}
                             width="640"
