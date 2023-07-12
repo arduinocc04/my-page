@@ -7,11 +7,11 @@ function PostThumbnail({post_info} : PostProps) {
         <div className=''>
             <a className="" href={url}>
                 <div className='relative demo-viewport'>
-                    <div className='absolute inset-0 rounded-lg bg-gray-700 dark:bg-blue-300 -z-10'></div>
-                    <div className='text-lg font-bold text-gray-200 dark:text-gray-700 p-2'>
+                    {/* <div className='absolute inset-0 rounded-lg bg-gray-700 dark:bg-blue-300 -z-10'></div> */}
+                    <div className='text-xl font-bold text-gray-700 dark:text-gray-300 px-2 pt-2 pb-1'>
                         <h1>{title}</h1>
                     </div>
-                    <div className='overflow-hidden p-2 w-full aspect-video'>
+                    <div className='overflow-clip px-2 w-full aspect-video rounded-xl'>
                         <Image
                             className=''
                             src={thumbnail_src}
@@ -20,11 +20,11 @@ function PostThumbnail({post_info} : PostProps) {
                             height="480"
                         />
                     </div>
-                    <div className='text-sm font-bold text-gray-200 dark:text-gray-700 px-2 pt-2'>
+                    <div className='text-sm font-bold text-gray-700 dark:text-gray-300 px-2 pt-1'>
                         <span>{summary}</span>
                     </div>
                     <div className='text-sm font-bold text-gray-400 dark:text-gray-700 px-2 pb-2'>
-                        <span>{date.toString()}</span>
+                        <span>{date.toLocaleDateString()}</span>
                     </div>
                 </div>
             </a>
@@ -46,6 +46,16 @@ export default function Home() {
                     </div>
                 </div>
                 <div className="mx-auto max-w-screen-xl">
+                    <div className="px-6 py-5 flex items-center space-y-0">
+                        <div className="flex-grow flex justify-start">
+                            <button>Img: cropped</button>
+                            <button>Img: full</button>
+                        </div>
+                        <div className="hidden sm:flex items-center justify-center space-x-6">
+                            <button>Hi </button>
+                            {/* Selecting Tags... */}
+                        </div>
+                    </div>
                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
                         {post_thumbnails.map((post_thumbnail) => (
                             <PostThumbnail key={post_thumbnail._id}post_info={post_thumbnail}/>

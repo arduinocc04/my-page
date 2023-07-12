@@ -17,14 +17,14 @@ export default function Footer() {
     };
 
     return (
-        <footer className="bg-gray-900 text-gray-400">
+        <footer className="bg-gray-900 text-gray-400 dark:bg-none dark:text-gray-800">
             <div className="mx-auto max-w-screen-xl">
                 <div className="px-10 sm:px-6 py-20">
                     <div className="mx-auto max-w-screen-xl">
                         <div className="px-6 py-5 flex items-center space-y-0">
                             <div className="flex-grow flex justify-start">
                                 <p className="text-gray-700 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400">
-                                <p>Daniel Cho.</p>
+                                <span>Daniel Cho.</span>
                                 </p>
                             </div>
                             <div className="flex items-center justify-center space-x-6 text-base font-medium">

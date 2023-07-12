@@ -8,7 +8,7 @@ export interface PostInfo {
     summary : string
     thumbnail_src : string
     url : string
-    date : string
+    date : Date
 }
 
 export type PostProps = {
@@ -40,7 +40,7 @@ export function getPostInfoBySlug(slug: string, fields: string[] = []) {
         summary : "",
         thumbnail_src : "",
         url : "",
-        date : "",
+        date : new Date(),
     };
 
     fields.forEach((field) => {
