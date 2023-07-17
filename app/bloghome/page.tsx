@@ -25,8 +25,8 @@ function PostThumbnail({post_info} : PostProps) {
                     </div>
                     <div className="flex px-2 gap-2">
                         {tags.map((tag, idx) => (
-                            <div className='text-sm float-left rounded-lg dark:bg-gray-300 dark:text-black px-1'>
-                                <span className="" key={idx}>#{tag}</span>
+                            <div key={idx} className='text-sm float-left rounded-lg dark:bg-gray-300 dark:text-black px-1'>
+                                <span className="">#{tag}</span>
                             </div>
                         ))}
                     </div>
