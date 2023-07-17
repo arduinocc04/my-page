@@ -9,6 +9,7 @@ export interface PostInfo {
     thumbnail_src : string
     url : string
     date : Date
+    tags: string[]
 }
 
 export type PostProps = {
@@ -36,11 +37,12 @@ export function getPostInfoBySlug(slug: string, fields: string[] = []) {
     
     const items: PostInfo = {
         _id : "-1",
-        title : "",
+        title : "No Title",
         summary : "",
-        thumbnail_src : "",
+        thumbnail_src : "https://images.unsplash.com/photo-1689351060804-fca36e095da4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1332&q=80",
         url : "",
         date : new Date(),
+        tags : []
     };
 
     fields.forEach((field) => {

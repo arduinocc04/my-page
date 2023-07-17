@@ -23,9 +23,14 @@ export default function Footer() {
                     <div className="mx-auto max-w-screen-xl">
                         <div className="px-6 py-5 flex items-center space-y-0">
                             <div className="flex-grow flex justify-start">
-                                <p className="text-gray-700 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400">
-                                <span>Daniel Cho.</span>
-                                </p>
+                                <div className="">
+                                    <p className="text-gray-700 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400">
+                                        <span>Daniel Cho.</span>
+                                    </p>
+                                    <button className="round-full justify-start bg-blue-900" onClick={() => {}}>
+                                        구독하기
+                                    </button>
+                                </div>
                             </div>
                             <div className="flex items-center justify-center space-x-6 text-base font-medium">
                                 <button onClick={change_locale_to_ko}>

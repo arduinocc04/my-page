@@ -2,7 +2,7 @@ import Image from 'next/image'
 import {PostProps, getAllPostInfos} from './post'
 
 function PostThumbnail({post_info} : PostProps) {
-    const {_id, title, summary, thumbnail_src, url, date} = post_info;
+    const {_id, title, summary, thumbnail_src, url, date, tags} = post_info;
     return (
         <div className=''>
             <a className="" href={url}>
@@ -11,7 +11,7 @@ function PostThumbnail({post_info} : PostProps) {
                     <div className='text-xl font-bold text-gray-700 dark:text-gray-300 px-2 pt-2 pb-1'>
                         <h1>{title}</h1>
                     </div>
-                    <div className='overflow-clip px-2 w-full aspect-video rounded-xl'>
+                    <div className='overflow-hidden px-2 w-full aspect-video rounded-xl'>
                         <Image
                             className=''
                             src={thumbnail_src}
@@ -23,6 +23,13 @@ function PostThumbnail({post_info} : PostProps) {
                     <div className='text-sm font-bold text-gray-700 dark:text-gray-300 px-2 pt-1'>
                         <span>{summary}</span>
                     </div>
+                    <div className="flex px-2 gap-2">
+                        {tags.map((tag, idx) => (
+                            <div className='text-sm float-left rounded-lg dark:bg-gray-300 dark:text-black px-1'>
+                                <span className="" key={idx}>#{tag}</span>
+                            </div>
+                        ))}
+                    </div>
                     <div className='text-sm font-bold text-gray-400 dark:text-gray-700 px-2 pb-2'>
                         <span>{date.toLocaleDateString()}</span>
                     </div>
@@ -33,7 +40,7 @@ function PostThumbnail({post_info} : PostProps) {
 }
 
 export default function Home() {
-    const post_thumbnails = getAllPostInfos(['title', 'summary', 'thumbnail_src', 'url', 'date']);
+    const post_thumbnails = getAllPostInfos(['title', 'summary', 'thumbnail_src', 'url', 'date', 'tags']);
   return (
     <main className="antialiased flex flex-col min-h-screen dark:bg-gray-900">
         <div className="flex-1">
@@ -47,12 +54,8 @@ export default function Home() {
                 </div>
                 <div className="mx-auto max-w-screen-xl">
                     <div className="px-6 py-5 flex items-center space-y-0">
-                        <div className="flex-grow flex justify-start">
-                            <button>Img: cropped</button>
-                            <button>Img: full</button>
-                        </div>
-                        <div className="hidden sm:flex items-center justify-center space-x-6">
-                            <button>Hi </button>
+                        <div className="flex items-center justify-center space-x-6">
+                            <button>태그 선택하기</button>
                             {/* Selecting Tags... */}
                         </div>
                     </div>
