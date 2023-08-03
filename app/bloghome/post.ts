@@ -1,4 +1,4 @@
-import fs from 'fs'
+import fs from 'fs';
 import {join} from 'path';
 import matter from 'gray-matter';
 
@@ -47,7 +47,7 @@ export function getPostInfoBySlug(slug: string, fields: string[] = []) {
 
     fields.forEach((field) => {
         if(field === 'url') {
-            items[field] = `/blog/${real_slug}`;
+            items[field] = `${real_slug}`;
         }
         else if(typeof data[field] !== 'undefined') {
             items[field as keyof PostInfo] = data[field];

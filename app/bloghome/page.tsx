@@ -1,11 +1,15 @@
 import Image from 'next/image'
 import {PostProps, getAllPostInfos} from './post'
+import Link from 'next/link';
 
 function PostThumbnail({post_info} : PostProps) {
     const {_id, title, summary, thumbnail_src, url, date, tags} = post_info;
     return (
         <div className=''>
-            <a className="" href={url}>
+            <Link href={{
+                pathname: "/blog",
+                query: {"id": url}
+            }}>
                 <div className='relative demo-viewport'>
                     {/* <div className='absolute inset-0 rounded-lg bg-gray-700 dark:bg-blue-300 -z-10'></div> */}
                     <div className='text-xl font-bold text-gray-700 dark:text-gray-300 px-2 pt-2 pb-1'>
@@ -34,7 +38,7 @@ function PostThumbnail({post_info} : PostProps) {
                         <span>{date.toLocaleDateString()}</span>
                     </div>
                 </div>
-            </a>
+            </Link>
         </div>
     );
 }
