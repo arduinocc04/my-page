@@ -18,8 +18,13 @@ export default function Home() {
                     <div>
                         <h1 className="pt-3 pl-4 text-lg sm:text-xl md:text-2xl lg:text-4xl font-headline font-black">Contact</h1>
                         <div className="pl-10">
-                            <a className="text-base sm:text-md md:text-lg lg:text-xl text-gray-500 dark:text-gray-400" href="mailto:arduinocc04@gmail.com">arduinocc04@gmail.com</a>
-                            <p className="pl-3 text-base text-gray-600 dark:text-gray-500">PGP Key</p>
+                            <span>
+                                <a className="text-base sm:text-md md:text-lg lg:text-xl text-gray-500 dark:text-gray-400" href="mailto:arduinocc04@gmail.com">arduinocc04@gmail.com</a>
+                            </span>
+                            <span className="pl-3 text-base text-gray-600 dark:text-gray-500">PGP Key</span>
+                        </div>
+                        <div className="pl-10">
+                            <a className="text-base sm:text-md md:text-lg lg:text-xl text-gray-500 dark:text-gray-400" href="https://solved.ac/profile/arduinocc04">arduinocc04</a>
                         </div>
                         <h1 className="pt-3 pl-4 text-lg sm:text-xl md:text-2xl lg:text-4xl font-headline font-black">Interests</h1>
                         <div className="pl-10">
