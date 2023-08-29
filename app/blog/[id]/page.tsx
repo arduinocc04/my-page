@@ -1,15 +1,8 @@
-import {PostProps, getPostInfoBySlug} from '../bloghome/post';
-import {getPostHtml} from './blog';
-import path from 'path';
-import { useSearchParams } from 'next/navigation';
+import {getPostInfoBySlug} from '../../bloghome/post';
+import {getPostHtml} from '../blog';
 
-export default function Post() {
-    // const searchParams = useSearchParams();
-    var id = 'test1' //searchParams.get('id');
-    // console.log("searchParams");
-    // console.log(searchParams);
-    // console.log("id");
-    // console.log(id);
+export default function Post({ params }: { params: {id: string}}) {
+    const id = params.id;
 
     const postInfos = getPostInfoBySlug(`${id}.md`, ["title", "date", "tags"]);
     const html = getPostHtml(id);

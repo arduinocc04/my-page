@@ -28,7 +28,7 @@ export default function Footer() {
                                         <span>Daniel Cho.</span>
                                     </p>
                                     <button className="round-full justify-start bg-blue-900" onClick={() => {}}>
-                                        구독하기
+                                        Subscribe
                                     </button>
                                 </div>
                             </div>

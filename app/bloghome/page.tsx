@@ -6,10 +6,7 @@ function PostThumbnail({post_info} : PostProps) {
     const {_id, title, summary, thumbnail_src, url, date, tags} = post_info;
     return (
         <div className=''>
-            <Link href={{
-                pathname: "/blog",
-                query: {"id": url}
-            }}>
+            <Link href={`/blog/${url}`}>
                 <div className='relative demo-viewport'>
                     {/* <div className='absolute inset-0 rounded-lg bg-gray-700 dark:bg-blue-300 -z-10'></div> */}
                     <div className='text-xl font-bold text-gray-700 dark:text-gray-300 px-2 pt-2 pb-1'>
@@ -57,15 +54,17 @@ export default function Home() {
                     </div>
                 </div>
                 <div className="mx-auto max-w-screen-xl">
+                    {/*
                     <div className="px-6 py-5 flex items-center space-y-0">
                         <div className="flex items-center justify-center space-x-6">
-                            <button>태그 선택하기</button>
-                            {/* Selecting Tags... */}
+                            <button>Select Tags</button>
                         </div>
                     </div>
+                    */
+                    }
                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
                         {post_thumbnails.map((post_thumbnail) => (
-                            <PostThumbnail key={post_thumbnail._id}post_info={post_thumbnail}/>
+                            <PostThumbnail key={post_thumbnail._id} post_info={post_thumbnail}/>
                         ))}
                     </div>
                 </div>
