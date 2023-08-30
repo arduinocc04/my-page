@@ -4,7 +4,7 @@ import {getPostHtml} from '../blog';
 export default function Post({ params }: { params: {id: string}}) {
     const id = params.id;
 
-    const postInfos = getPostInfoBySlug(`${id}.md`, ["title", "date", "tags"]);
+    const postInfos = getPostInfoBySlug(`${id}`, ["title", "date", "tags"]);
     const html = getPostHtml(id);
   return (
     <main className="antialiased flex flex-col min-h-screen dark:bg-gray-900">
