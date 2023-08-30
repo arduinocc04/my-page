@@ -19,6 +19,10 @@ export default function Home() {
                             <br className="hidden sm:block"/>
                             <span>Showdown Js</span>
                             <br className="hidden sm:block"/>
+                            {/*
+                                <span>LaTeX Js</span>
+                            <br className="hidden sm:block"/>*/
+                            }
                         </h1>
                     </div>
                 </div>

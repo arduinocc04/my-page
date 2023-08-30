@@ -17,7 +17,7 @@ export default function Footer() {
     };
 
     return (
-        <footer className="bg-gray-900 text-gray-400 dark:bg-none dark:text-gray-800">
+        <footer className="bg-gray-900 text-gray-400 dark:bg-gray-900 dark:text-gray-800">
             <div className="mx-auto max-w-screen-xl">
                 <div className="px-10 sm:px-6 py-20">
                     <div className="mx-auto max-w-screen-xl">
@@ -27,9 +27,9 @@ export default function Footer() {
                                     <p className="text-gray-700 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400">
                                         <span>Daniel Cho.</span>
                                     </p>
-                                    <button className="round-full justify-start bg-blue-900" onClick={() => {}}>
-                                        Subscribe
-                                    </button>
+                                    <a className="round-full justify-start bg-blue-900" href="https://github.com/arduinocc04/my-page">
+                                        Subscribe(Click Watch)
+                                    </a>
                                 </div>
                             </div>
                             <div className="flex items-center justify-center space-x-6 text-base font-medium">

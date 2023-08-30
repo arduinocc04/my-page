@@ -24,16 +24,52 @@ export function getPostSlugs() {
         if(tmp != undefined && tmp?.length > 0) {
             res.push(slug);
         }
+        var tmp = slug.match(/\.tex$/);
+        if(tmp != undefined && tmp?.length > 0) {
+            res.push(slug);
+        }
     })
     return res;
 }
 
 export function getPostInfoBySlug(slug: string, fields: string[] = []) {
     const posts_dir = join(process.cwd(), "my-blog");
-    const real_slug = slug.replace(/\.md$/, '');
-    const full_path = join(posts_dir, `${real_slug}.md`);
+    var real_slug:string, full_path:string;
+    var tmp = slug.match("\\.");
+    console.log(tmp);
+    console.log('init', slug);
+    if(tmp != undefined && tmp?.length > 0) {
+        var tmp = slug.match(/\.md$/);
+        if(tmp != undefined && tmp?.length > 0) {
+            console.log('mdslug', slug);
+            real_slug = slug.replace(/\.md$/, '');
+            full_path = join(posts_dir, `${real_slug}.md`);
+        }
+        else {
+            var tmp = slug.match(/\.tex$/);
+            if(tmp != undefined && tmp?.length > 0) {
+                console.log("SLUG", slug);
+                real_slug = slug.replace(/\.tex$/, '');
+                full_path = join(posts_dir, `${real_slug}.tex`);
+            }
+            else {
+                console.log('out')
+                return;
+            }
+        }
+    }
+    else {
+        full_path = join(posts_dir, `${slug}.md`);
+        console.log('slug', slug);
+        if(!fs.existsSync(full_path)) {
+            full_path = join(posts_dir, `${slug}.tex`);
+        }
+        console.log("not dot", slug);
+    }
     const file_content = fs.readFileSync(full_path, 'utf8');
+    console.log(full_path, file_content)
     const { data, content } = matter(file_content);
+    console.log('post data', data);
     
     const items: PostInfo = {
         _id : "-1",
@@ -53,11 +89,13 @@ export function getPostInfoBySlug(slug: string, fields: string[] = []) {
             items[field as keyof PostInfo] = data[field];
         }
     });
+    console.log(items);
     return items;
 }
 
 export function getAllPostInfos(fields: string[] = []) {
     const slugs = getPostSlugs();
+    console.log(slugs);
     const post_infos = slugs
                        .map((slug) => getPostInfoBySlug(slug, fields))
                        .sort((post_info1, post_info2) => (post_info1.date > post_info2.date ? -1 : 1));
