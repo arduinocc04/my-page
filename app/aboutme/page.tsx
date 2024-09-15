@@ -18,7 +18,7 @@ function Device({device}:{device: Map<string, string>}) {
             <p className="text-base sm:text-md md:text-lg lg:text-xl text-gray-600 dark:text-gray-400">{device["system"]}</p>
             {
                 keys.map((key) => (
-                    <p className="text-base sm:text-md md:text-lg lg:text-xl text-gray-600 dark:text-gray-400">{key}: {device[key]}</p>
+                    <p className="text-base sm:text-md md:text-lg lg:text-xl text-gray-600 dark:text-gray-400" key={key}>{key}: {device[key]}</p>
                 ))
             }
         </div>
@@ -70,7 +70,7 @@ export default function Home() {
                         <div className="pl-10">
                         {
                             interests.map((interest:string) => (
-                                <p className="text-base sm:text-md md:text-lg lg:text-xl text-gray-600 dark:text-gray-400">{interest}</p>
+                                <p className="text-base sm:text-md md:text-lg lg:text-xl text-gray-600 dark:text-gray-400" key={interest} >{interest}</p>
                             ))
                         }
                         </div>
@@ -78,7 +78,7 @@ export default function Home() {
                         <div className="pl-10">
                         {
                             languages.map((lang:Map<string, string>) => (
-                                <div>
+                                <div key={lang["name"]}>
                                     <p className="text-base sm:text-md md:text-lg lg:text-xl text-gray-600 dark:text-gray-400">{lang["name"]}</p>
                                     <p className="text-base sm:text-md md:text-lg lg:text-xl text-gray-600 dark:text-gray-400">{lang["level"]}</p>
                                     {lang["qualification"] && <p className="text-base sm:text-md md:text-lg lg:text-xl text-gray-600 dark:text-gray-400">{lang["qualification"]}</p>}
@@ -91,7 +91,8 @@ export default function Home() {
                             {
                                 devices.map((device:Map<string, string>) => (
                                     <Device
-                                        device = {device} />
+                                        device = {device}
+                                        key = {device["name"]} />
                                 ))
                             }
                         </div>
