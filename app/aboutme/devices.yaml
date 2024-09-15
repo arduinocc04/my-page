@@ -1,0 +1,24 @@
+devices:
+  -
+    name: The Big one
+    type: homeBuiltPC
+    system: Arch Linux + Hyprland/KDE | Windows 11
+    cpu: AMD Ryzen 5800X
+    ram: DDR4 32GB
+    mainboard: ASUS TUF GAMIMG B550-PRO
+    gpu: GIGABYTE Geforce RTX 3060 Gaming OC V2 D6 12GB
+    keyboard: Deck Francium Geobukseon-black switch
+    mouse: Razer DeathAdder Essential
+    speaker: Edifier MR4
+    headphone: OneOdio Monitor 80
+    microphone: FiFine T669
+  -
+    name: The small one
+    type: laptop
+    system: Endeavouros + Hyprland/KDE | Windows 11
+    device: Samsung Galaxy Book Flex2 NT950QDA
+  -
+    name: The tiny one
+    type: cellphone
+    system: Android 13
+    device: Samsung Galaxy S20 FE 5G

@@ -1,0 +1,12 @@
+languages:
+  -
+    name: Korean
+    level: native
+  -
+    name: English
+    level: proficient
+    qualification: New TEPS 400/600 (Taken in Feb 2023)
+skills:
+  - Python
+  - C++
+  - LaTeX

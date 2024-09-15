@@ -1,7 +1,46 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import YAML from 'yaml'
+import fs from 'fs'
+
+function Device({device}:{device: Map<string, string>}) {
+    var keys:Array<string> = [];
+    const black_keys = new Set(["system", "name", "type"]);
+    for(let key in device) {
+        if(!black_keys.has(key)) {
+            keys.push(key);
+        }
+    }
+
+    return (
+        <div>
+            <h1 className="pt-3 pl-4 text-lg sm:text-xl md:text-2xl lg:text-4xl font-headline font-black">{device["name"]}</h1>
+            <p className="text-base sm:text-md md:text-lg lg:text-xl text-gray-600 dark:text-gray-400">{device["system"]}</p>
+            {
+                keys.map((key) => (
+                    <p className="text-base sm:text-md md:text-lg lg:text-xl text-gray-600 dark:text-gray-400">{key}: {device[key]}</p>
+                ))
+            }
+        </div>
+    )
+}
+
+function parse_yaml(name:string) {
+    const file_contents = fs.readFileSync(process.cwd() + "/app/aboutme/" + name);
+    return YAML.parse(file_contents.toString());
+}
 
 export default function Home() {
+  const interests = parse_yaml("interests.yaml")["interests"];
+  const educations = parse_yaml("educations.yaml")["educations"];
+  const skill_raw = parse_yaml("skills.yaml");
+  const languages = skill_raw["languages"];
+  const skills = skill_raw["skills"];
+  const devices = parse_yaml("devices.yaml")["devices"];
+  const contact_raw = parse_yaml("contacts.yaml");
+  const mail = contact_raw["mail"];
+  const sites = contact_raw["sites"];
+
   return (
     <main className="antialiased flex flex-col min-h-screen dark:bg-gray-900">
         <div className="flex-1">
@@ -29,34 +68,32 @@ export default function Home() {
                         </div>
                         <h1 className="pt-3 pl-4 text-lg sm:text-xl md:text-2xl lg:text-4xl font-headline font-black">Interests</h1>
                         <div className="pl-10">
-                        <p className="text-base sm:text-md md:text-lg lg:text-xl text-gray-600 dark:text-gray-400">Game</p>
-                        <p className="text-base sm:text-md md:text-lg lg:text-xl text-gray-600 dark:text-gray-400">Movie</p>
-                        <p className="text-base sm:text-md md:text-lg lg:text-xl text-gray-600 dark:text-gray-400">Music</p>
+                        {
+                            interests.map((interest:string) => (
+                                <p className="text-base sm:text-md md:text-lg lg:text-xl text-gray-600 dark:text-gray-400">{interest}</p>
+                            ))
+                        }
                         </div>
                         <h1 className="pt-3 pl-4 text-lg sm:text-xl md:text-2xl lg:text-4xl font-headline font-black">Languages</h1>
                         <div className="pl-10">
-                            <p className="text-base sm:text-md md:text-lg lg:text-xl text-gray-600 dark:text-gray-400">Korean</p>
-                            <p className="text-base sm:text-md md:text-lg lg:text-xl text-gray-600 dark:text-gray-400">English</p>
-                            <p className="text-base sm:text-md md:text-lg lg:text-xl text-gray-600 dark:text-gray-400">Python</p>
-                            <p className="text-base sm:text-md md:text-lg lg:text-xl text-gray-600 dark:text-gray-400">C++</p>
+                        {
+                            languages.map((lang:Map<string, string>) => (
+                                <div>
+                                    <p className="text-base sm:text-md md:text-lg lg:text-xl text-gray-600 dark:text-gray-400">{lang["name"]}</p>
+                                    <p className="text-base sm:text-md md:text-lg lg:text-xl text-gray-600 dark:text-gray-400">{lang["level"]}</p>
+                                    {lang["qualification"] && <p className="text-base sm:text-md md:text-lg lg:text-xl text-gray-600 dark:text-gray-400">{lang["qualification"]}</p>}
+                                </div>
+                            ))
+                        }
                         </div>
                         <h1 className="pt-3 pl-4 text-lg sm:text-xl md:text-2xl lg:text-4xl font-headline font-black">My Friends</h1>
                         <div className="pl-10">
-                            <h1 className="pt-3 pl-4 text-lg sm:text-xl md:text-2xl lg:text-4xl font-headline font-black">The Big one</h1>
-                            <div className="pl-10">
-                                <p className="text-base sm:text-md md:text-lg lg:text-xl text-gray-600 dark:text-gray-400">Arch Linux + KDE</p>
-                                <p className="text-base sm:text-md md:text-lg lg:text-xl text-gray-600 dark:text-gray-400">AMD Ryzen 5800X</p>
-                                <p className="text-base sm:text-md md:text-lg lg:text-xl text-gray-600 dark:text-gray-400">DDR4 32GB</p>
-                                <p className="text-base sm:text-md md:text-lg lg:text-xl text-gray-600 dark:text-gray-400">ASUS TUF GAMING B550-PRO</p>
-                                <p className="text-base sm:text-md md:text-lg lg:text-xl text-gray-600 dark:text-gray-400">GIGABYTE Geforce RTX 3060 Gaming OC V2 D6 12GB</p>
-                                <p className="text-base sm:text-md md:text-lg lg:text-xl text-gray-600 dark:text-gray-400">Deck Francium Geobukseon-black switch</p>
-                                <p className="text-base sm:text-md md:text-lg lg:text-xl text-gray-600 dark:text-gray-400">Razer DeathAdder Essential</p>
-                            </div>
-                            <h1 className="pt-3 pl-4 text-lg sm:text-xl md:text-2xl lg:text-4xl font-headline font-black">The small one</h1>
-                            <div className="pl-10">
-                                <p className="text-base sm:text-md md:text-lg lg:text-xl text-gray-600 dark:text-gray-400">Endeavouros + KDE</p>
-                                <p className="text-base sm:text-md md:text-lg lg:text-xl text-gray-600 dark:text-gray-400">Samsung Galaxy Book Flex2 NT950QDA</p>
-                            </div>
+                            {
+                                devices.map((device:Map<string, string>) => (
+                                    <Device
+                                        device = {device} />
+                                ))
+                            }
                         </div>
                     </div>
                 </div>
