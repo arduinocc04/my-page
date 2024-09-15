@@ -1,0 +1,10 @@
+educations:
+  - type: bachelor
+    majors:
+      - Computer Science
+    entrance: Feb 2023
+    graduation: current
+    cgpa: 4.07
+    major_cgpa: 4.11
+    max_gpa: 4.3
+    name: Sogang University
