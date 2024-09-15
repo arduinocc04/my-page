@@ -53,8 +53,7 @@ export function getPostInfoBySlug(slug: string, fields: string[] = []) {
                 full_path = join(posts_dir, `${real_slug}.tex`);
             }
             else {
-                console.log('out')
-                return;
+                full_path = ""
             }
         }
     }
@@ -70,7 +69,7 @@ export function getPostInfoBySlug(slug: string, fields: string[] = []) {
     console.log(full_path, file_content)
     const { data, content } = matter(file_content);
     console.log('post data', data);
-    
+    1
     const items: PostInfo = {
         _id : "-1",
         title : "No Title",

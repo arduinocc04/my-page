@@ -3,7 +3,11 @@ import Link from 'next/link'
 import YAML from 'yaml'
 import fs from 'fs'
 
-function Device({device}:{device: Map<string, string>}) {
+type StringMap = {
+    [key: string] : string
+};
+
+function Device({device}:{device: StringMap}) {
     var keys:Array<string> = [];
     const black_keys = new Set(["system", "name", "type"]);
     for(let key in device) {
@@ -77,7 +81,7 @@ export default function Home() {
                         <h1 className="pt-3 pl-4 text-lg sm:text-xl md:text-2xl lg:text-4xl font-headline font-black">Languages</h1>
                         <div className="pl-10">
                         {
-                            languages.map((lang:Map<string, string>) => (
+                            languages.map((lang:StringMap) => (
                                 <div key={lang["name"]}>
                                     <p className="text-base sm:text-md md:text-lg lg:text-xl text-gray-600 dark:text-gray-400">{lang["name"]}</p>
                                     <p className="text-base sm:text-md md:text-lg lg:text-xl text-gray-600 dark:text-gray-400">{lang["level"]}</p>
@@ -89,7 +93,7 @@ export default function Home() {
                         <h1 className="pt-3 pl-4 text-lg sm:text-xl md:text-2xl lg:text-4xl font-headline font-black">My Friends</h1>
                         <div className="pl-10">
                             {
-                                devices.map((device:Map<string, string>) => (
+                                devices.map((device:StringMap) => (
                                     <Device
                                         device = {device}
                                         key = {device["name"]} />
