@@ -73,7 +73,7 @@ export default function Home() {
                     </p>
                     {
                         sites.map((site:StringMap) => (
-                            <p>
+                            <p key={site["name"]}>
                                 <label htmlFor="text">
                                     {site["name"]}
                                 </label>
@@ -98,7 +98,7 @@ export default function Home() {
             <h2>언어</h2>
             {
                 languages.map((lang:StringMap) => (
-                    <figure>
+                    <figure key={lang["name"]}>
                         <figcaption>{lang["name"]}</figcaption>
                         <p>{lang["level"]}</p>
                         {lang["qualification"] && <p>{lang["qualification"]}</p>}
