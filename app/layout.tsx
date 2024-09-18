@@ -1,9 +1,40 @@
-import './globals.css'
-import { Inter } from 'next/font/google'
-import  Footer from '../component/Footer'
+import localFont from 'next/font/local'
+import Disco from '@/component/DiscoComm'
+import "./styles/layout.css"
 
-const inter = Inter({ subsets: ['latin'] })
+const nanumGothic = localFont({
+  src: [
+    {
+      path: "./font/NanumGothic.ttf",
+      weight: "400"
+    },
+    {
+      path: "./font/NanumGothicBold.ttf",
+      weight: "700"
+    },
+    {
+      path: "./font/NanumGothicExtraBold.ttf",
+      weight: "800"
+    }
+  ]
+});
 
+const nanumMyeongjo = localFont({
+  src: [
+    {
+      path: "./font/NanumMyeongjo.ttf",
+      weight: "400"
+    },
+    {
+      path: "./font/NanumMyeongjoBold.ttf",
+      weight: "700"
+    },
+    {
+      path: "./font/NanumMyeongjoExtraBold.ttf",
+      weight: "800"
+    }
+  ]
+})
 export const metadata = {
   title: 'Daniel\'s Cradle',
   description: 'Daniel\'s Cradle',
@@ -15,27 +46,17 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <div className="dark:bg-gray-900">
-          <header className="mx-auto max-w-screen-xl">
-            <div className="px-6 py-5 flex items-center space-y-0">
-              <div className="flex-grow flex justify-start">
-                <a className="text-gray-700 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400" href="/">
-                  <p>Daniel Cho</p>
-                </a>
-              </div>
-              <div className="hidden sm:flex items-center justify-center space-x-6 text-base font-medium">
-                <a className="text-gray-700 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400" href="/aboutme">About me</a>
-                <a className="text-gray-700 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400" href="/projecthome">Projects</a>
-                <a className="text-gray-700 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400" href="/bloghome">Blog</a>
-              </div>
-            </div>
-          </header>
+    <html>
+      <body className="">
+        <div className="main-wrapper">
+          <div className={`${nanumGothic.className} main-yorha`} style={{fontWeight: "normal"}}>
+            {children}
+          </div>
+          <div className={`${nanumMyeongjo.className} main-disco`} style={{fontWeight: "normal"}}>
+            <Disco />
+          </div>
         </div>
-        {children}
       </body>
-      <Footer />
     </html>
   )
 }

@@ -1,0 +1,22 @@
+.main-wrapper {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 0px;
+    grid-template-rows: 1fr;
+}
+
+.main-disco {
+    grid-column: 8 / 11;
+    grid-row: 1;
+}
+
+.main-yorha {
+    grid-column: 1 / 8;
+    grid-row: 1;
+}
+
+.aboutme-flex {
+    display: flex;
+    gap: 0px;
+    flex-direction: column;
+}
