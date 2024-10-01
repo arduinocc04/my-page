@@ -1,18 +1,32 @@
+body {
+    margin: 0;
+}
+
 .main-wrapper {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     gap: 0px;
     grid-template-rows: 1fr;
+    height: 100vh;
 }
 
 .main-disco {
-    grid-column: 8 / 11;
-    grid-row: 1;
+    width: 30vw;
+    height: 100vh;
+    top: 0;
+    left: 70vw;
+    position:fixed
 }
 
 .main-yorha {
     grid-column: 1 / 8;
     grid-row: 1;
+    margin-left: 1.5%;
+    margin-right: 1%;
+    margin-top: 1%;
+    width: 70vw;
+    height: 100vh;
+    overflow:scroll
 }
 
 .aboutme-flex {
