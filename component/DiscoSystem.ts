@@ -83,7 +83,7 @@ export class DiscoSystem {
         for(let i = 0; i < this.generatingDialogueStack.length; ++i) {
             var t = dialogues[dialogues.length - 1];
 
-            if(t.answers !== undefined) {
+            if("answers" in t) { // t is Question
                 if((t as Question).answers.length > (t as Question).next.size) {
                     this.generatingDialogueStack.push((t as Question).next.size);
                     break;
@@ -129,11 +129,15 @@ export class DiscoSystem {
             callback: callback
         } as Question);
         this.generatingDialogueStack.push(0);
+        console.log("Say Debug log: ");
+        console.log(dialogue);
         return DiscoSystem;
     }
 
     public static print(dialogue:Question|Say) {
-        if(dialogue.answers !== undefined) { // Question
+        console.log(`name: ${dialogue.name}`);
+        console.log(`message: ${dialogue.content}`);
+        if("answers" in dialogue) { // dialogue is a Question
             (dialogue as Question).answers.forEach((ans) => {
                 switch(ans.type) {
                     case AnswerType.normal:
@@ -152,10 +156,13 @@ export class DiscoSystem {
 
     public next(index:number = 0) {
         let valid = true;
+        console.log(DiscoSystem.dialogueStack)
+        console.log(DiscoSystem.generatingDialogueStack)
         let dialogue:Question|Say = DiscoSystem.dialogueRoot;
         DiscoSystem.dialogueStack.forEach((value) => {
             dialogue = dialogue.next.get(value) as Question|Say;
         })
+        console.log(`index: ${index}`);
         if(dialogue.next.size > index) {
             DiscoSystem.dialogueStack.push(index);
             dialogue = dialogue.next.get(index) as Question|Say;
@@ -169,7 +176,7 @@ export class DiscoSystem {
             for(let i = 0; i < DiscoSystem.dialogueStack.length; ++i) {
                 var t = dialogues.pop() as Question|Say;
 
-                if(t.answers !== undefined) { // Question
+                if("answers" in t) { // Question
                     dialogue = t;
                     break;
                 }
@@ -212,8 +219,12 @@ export class DiscoSystem {
         if(valid) {
             DiscoSystem.print(dialogue);
             dialogue.callback();
-            if(dialogue.answers !== undefined) { // Question
+            if("answers" in dialogue) { // Question
                 for(let i = 0; i < (dialogue as Question).answers.length; ++i) {
+                    const btn = document.createElement("button");
+                    btn.onclick = () => {this.next(i)};
+                    btn.innerText = (dialogue as Question).answers[i].content;
+                    document.body.appendChild(btn);
                 }
             }
             else {
