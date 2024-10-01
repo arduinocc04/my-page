@@ -1,0 +1,94 @@
+html, body {
+    height: 100%
+}
+
+.disco-wrapper {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    gap: 0px;
+    grid-template-rows: 1fr;
+    height: inherit;
+    width: inherit;
+    opacity: 0.98;
+}
+
+.disco-main{
+    grid-column: 2 / 24;
+    grid-row: 1;
+    height: 100%;
+
+    background-color: #272727;
+
+    padding-left: 3vw;
+    padding-right: 2vw;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+
+    font-size: x-large;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 2vh;
+    overflow: scroll;
+}
+
+.disco-outline {
+    background-color: #939393;
+    height: 100%;
+}
+
+.disco-outline .left {
+    grid-column: 1;
+    grid-row: 1;
+    background-color: inherit;
+    height: inherit;
+}
+
+.disco-outline .right {
+    grid-column: 24;
+    grid-row: 1;
+    background-color: inherit;
+    height: inherit;
+}
+
+.say {
+    width: 100%;
+    height: fit-content;
+    color: #C5C9B5;
+}
+
+.question {
+    color: #CD4729;
+}
+
+
+.speaker {
+    margin-left: -1vw;
+    font-weight: bold;
+    color: white;
+}
+
+.intellect {
+    color: #47A7FF !important;
+}
+
+.psyche {
+    color: #7C47BF !important;
+}
+
+.physique {
+    color: #C6496B !important;
+}
+
+.motorics {
+    color: #E4B934 !important;
+}
+
+.say-level {
+    color: #505050;
+}
+
+.past {
+    opacity: 0.5;
+}

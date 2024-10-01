@@ -6,6 +6,9 @@ import "yorha/dist/yorha.css"
 import "../styles/added-yorha.css"
 import "../styles/layout.css"
 
+import Dialogue from "./disco"
+import Script from 'next/script'
+
 
 type StringMap = {
     [key: string] : string
@@ -24,7 +27,7 @@ function Device({device}:{device: StringMap}) {
         <figure>
             <figcaption>{device["name"]}</figcaption>
             <div>
-                <p >{device["system"]}</p>
+                <p>{device["system"]}</p>
                 {
                     keys.map((key) => (
                         <p key={key}>{key}: {device[key]}</p>
@@ -53,6 +56,7 @@ export default function Home() {
 
   return (
     <main className="">
+        <Dialogue />
         <div className="aboutme-flex">
             <h1>정보</h1>
             <blockquote>
@@ -105,7 +109,7 @@ export default function Home() {
                     </figure>
                 ))
             }
-            <h2>친구들</h2>
+            <h2>기기</h2>
             {
                 devices.map((device:StringMap) => (
                     <Device
