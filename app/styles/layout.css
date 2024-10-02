@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    overflow: hidden;
 }
 
 .main-wrapper {
@@ -19,14 +20,54 @@ body {
 }
 
 .main-yorha {
-    grid-column: 1 / 8;
-    grid-row: 1;
-    margin-left: 1.5%;
-    margin-right: 1%;
-    margin-top: 1%;
-    width: 70vw;
     height: 100vh;
-    overflow:scroll
+    overflow: scroll;
+    grid-row: 1;
+    padding-left: 1.5%;
+    padding-right: 1%;
+    padding-top: 5%;
+    margin: 0;
+
+    font-size: small;
+}
+
+
+@media (min-width: 768px) {
+    .main-yorha {
+        font-size: medium;
+    }
+}
+@media (min-width: 992px) {
+    .main-yorha {
+        font-size: large;
+    }
+}
+@media (min-width: 1200px) {
+    .main-yorha {
+        font-size: x-large;
+    }
+}
+
+@media (min-aspect-ratio: 1/1) {
+    .main-disco {
+        display: block;
+    }
+
+    .main-yorha {
+        grid-column: 1 / 8;
+        width: inherit;
+    }
+}
+
+@media (max-aspect-ratio: 1/1) {
+    .main-disco {
+        display: none;
+    }
+
+    .main-yorha {
+        grid-column: 1 / 11;
+        width: inherit;
+    }
 }
 
 .aboutme-flex {
