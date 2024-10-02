@@ -46,17 +46,13 @@ function Questions({questions, thiss}:QuestionsType) {
     )
 }
 
-class App extends React.Component {
-    constructor(props) {
+class App extends React.Component<{}, { data: Array<React.JSX.Element> }> {
+    constructor(props:any) {
         super(props);
 
         this.state = {
             data: []
         };
-    }
-
-    getInitialState() {
-        return {data:[]};
     }
 
     addChild = (num:number) => {

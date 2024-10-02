@@ -145,15 +145,12 @@ export class DiscoSystem {
         return DiscoSystem;
     }
 
-    public next(index:number = 0) {
+    public next(index:number = 0): Say|Question {
         let valid = true;
-        console.log(DiscoSystem.dialogueStack)
-        console.log(DiscoSystem.generatingDialogueStack)
         let dialogue:Question|Say = DiscoSystem.dialogueRoot;
         DiscoSystem.dialogueStack.forEach((value) => {
             dialogue = dialogue.next.get(value) as Question|Say;
         })
-        console.log(`index: ${index}`);
         if(dialogue.next.size > index) {
             DiscoSystem.dialogueStack.push(index);
             dialogue = dialogue.next.get(index) as Question|Say;
