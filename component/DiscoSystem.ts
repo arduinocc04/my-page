@@ -18,23 +18,30 @@ export interface Answer {
     callback: Function
 }
 
-interface Question {
+export interface Speaker {
     name: string,
+    type: string
+}
+
+export interface Question {
+    speaker: Speaker,
     constraints: Array<Constraint>,
     content: string,
     answers: Array<Answer>,
     done: boolean,
     callback: Function,
-    next: Map<number, Question|Say>
+    next: Map<number, Question|Say>,
+    level: string
 }
 
-interface Say {
-    name: string,
+export interface Say {
+    speaker: Speaker,
     constraints: Array<Constraint>
     content: string,
     done: boolean,
     callback: Function,
-    next: Map<number, Question|Say>
+    next: Map<number, Question|Say>,
+    level: string
 }
 
 export class DiscoSystem {
@@ -47,13 +54,17 @@ export class DiscoSystem {
     private static judgeData = new Map<string, number>();
 
     private static dialogueRoot = {
-        name: "root",
+        speaker: {
+            name: "root",
+            type: ""
+        },
         constraints: [],
         content: "",
         answers: [],
         done: false,
         callback: () => {},
-        next: new Map<number, Say|Question>()
+        next: new Map<number, Say|Question>(),
+        level: ""
     } as Question;
 
     private static dialogueStack = new Array<number>();
@@ -97,61 +108,41 @@ export class DiscoSystem {
     }
 
     /**  */
-    public static question(name:string, constraints:Array<Constraint>, question:string, answers:Array<Answer>, callback:Function) {
+    public static question(speaker: Speaker, constraints:Array<Constraint>, question:string, answers:Array<Answer>, callback:Function, level:string) {
         var dialogue:Question|Say = this.dialogueRoot;
         for(let i = 0; i < this.generatingDialogueStack.length - 1; ++i) {
             dialogue = dialogue.next.get(this.generatingDialogueStack[i]) as Question|Say;
         }
         dialogue.next.set(this.generatingDialogueStack[this.generatingDialogueStack.length - 1], {
-            name: name,
+            speaker: speaker,
             answers: answers,
             constraints: constraints,
             content: question,
             done: false,
             next: new Map<number, Question|Say>(),
-            callback: callback
+            callback: callback,
+            level: level
         } as Question);
         this.generatingDialogueStack.push(0);
         return DiscoSystem;
     }
 
-    public static say(name:string, constraints:Array<Constraint>, content:string, callback: Function) {
+    public static say(speaker:Speaker, constraints:Array<Constraint>, content:string, callback: Function, level:string) {
         let dialogue:Question|Say = this.dialogueRoot;
         for(let i = 0; i < this.generatingDialogueStack.length - 1; ++i) {
             dialogue = dialogue.next.get(this.generatingDialogueStack[i]) as Question|Say;
         }
         dialogue.next.set(this.generatingDialogueStack[this.generatingDialogueStack.length - 1], {
-            name: name,
+            speaker: speaker,
             constraints: constraints,
             content: content,
             done: false,
             next: new Map<number, Question|Say>(),
-            callback: callback
+            callback: callback,
+            level: level
         } as Question);
         this.generatingDialogueStack.push(0);
-        console.log("Say Debug log: ");
-        console.log(dialogue);
         return DiscoSystem;
-    }
-
-    public static print(dialogue:Question|Say) {
-        console.log(`name: ${dialogue.name}`);
-        console.log(`message: ${dialogue.content}`);
-        if("answers" in dialogue) { // dialogue is a Question
-            (dialogue as Question).answers.forEach((ans) => {
-                switch(ans.type) {
-                    case AnswerType.normal:
-                        console.log(`normal: ${ans.content}`);
-                        break;
-                    case AnswerType.redTry:
-                        console.log(`redTry: ${ans.content}`);
-                        break;
-                    case AnswerType.whiteTry:
-                        console.log(`whiteTry: ${ans.content}`);
-                        break;
-                }
-            })
-        }
     }
 
     public next(index:number = 0) {
@@ -217,22 +208,11 @@ export class DiscoSystem {
 
         dialogue.done = true;
         if(valid) {
-            DiscoSystem.print(dialogue);
             dialogue.callback();
-            if("answers" in dialogue) { // Question
-                for(let i = 0; i < (dialogue as Question).answers.length; ++i) {
-                    const btn = document.createElement("button");
-                    btn.onclick = () => {this.next(i)};
-                    btn.innerText = (dialogue as Question).answers[i].content;
-                    document.body.appendChild(btn);
-                }
-            }
-            else {
-
-            }
+            return dialogue;
         }
         else {
-            this.next();
+            return this.next(0);
         }
     }
 
