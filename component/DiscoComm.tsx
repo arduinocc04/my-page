@@ -1,23 +1,25 @@
 "use client";
 import "./disco.css"
-import {discoInst} from "../component/DiscoSystem"
+import {discoInst, Say, Speaker, Question, Answer, AnswerType} from "../component/DiscoSystem"
+import React, { ReactNode } from 'react'
 
 interface SayType {
-    name: string,
-    speakerClass: string,
+    speaker: Speaker,
     level: string,
     content: string,
 };
 
 interface QuestionsType {
-    questions: Array<string>
-};
+    questions: Array<Answer>,
+    thiss: App
+}
 
-function Say({name, speakerClass, level, content}: SayType) {
+
+function SayDiv({speaker, level, content}: SayType) {
     return (
-        <div>
+        <div className="say-div">
             <span className="say">
-                <span className={`speaker ${speakerClass}`}>{name}</span>
+                <span className={`speaker ${speaker.type}`}>{speaker.name}</span>
                 <span className="say-level">&nbsp;{level}</span>
                 &nbsp;–&nbsp;{content}
             </span>
@@ -25,24 +27,74 @@ function Say({name, speakerClass, level, content}: SayType) {
     )
 }
 
-function Question({questions}:QuestionsType) {
+function Questions({questions, thiss}:QuestionsType) {
     return (
-        <div>
+        <div className="say-div">
             {
                 questions.map((question, idx) => (
-                    <div key={idx}>
-                        <span className="say">
-                            <span className="speaker">{idx + 1}.</span>
-                            &nbsp;–&nbsp;
-                            <span className="question">
-                            {question}
+                    <a key={idx} href="javascript:void(0);" onClick={() => {thiss.addChild(idx)}}>
+                        <div className={(question.type == AnswerType.normal)?"normal-q":(question.type == AnswerType.whiteTry)?"white-try":"red-try"}>
+                            <span>
+                                <span className="speaker">{idx + 1}.&nbsp;–&nbsp;</span>
+                                {question.content}
                             </span>
-                        </span>
-                    </div>
+                        </div>
+                    </a>
                 ))
             }
         </div>
     )
+}
+
+class App extends React.Component<{}, { data: Array<React.JSX.Element> }> {
+    constructor(props:any) {
+        super(props);
+
+        this.state = {
+            data: []
+        };
+    }
+
+    addChild = (num:number) => {
+        const dialogue:Question|Say = discoInst.next(num);
+        this.setState(prevState => ({
+            data: [...prevState.data,
+                <SayDiv
+                    content={dialogue.content}
+                    level={dialogue.level}
+                    speaker={dialogue.speaker}
+                />
+            ]
+        }));
+
+        if("answers" in dialogue) {
+            this.setState(prevState => ({
+                data: [...prevState.data,
+                    <Questions
+                        questions={dialogue.answers}
+                        thiss={this}
+                    />
+                ]
+            }));
+        }
+    }
+
+    render() {
+        return (
+            <div className="disco-dialogue">
+                {
+                    this.state.data.map((item, idx) => (
+                        <div key={idx}>
+                            {item}
+                        </div>
+                    ))
+                }
+                <a href="javascript:void(0);" onClick={() => {this.addChild(0)}}>
+                    <div className="disco-block-btn" id="continue-btn">CONTINUE &#62;</div>
+                </a>
+            </div>
+        )
+    }
 }
 
 export default function Disco() {
@@ -50,39 +102,7 @@ export default function Disco() {
         <div className="disco-wrapper">
             <div className="disco-outline left"/>
             <div className="disco-main">
-                <Say
-                    name="개념화"
-                    speakerClass="intellect"
-                    level="[쉬움: 성공]"
-                    content="인생은 고달프지마아이아안. 우리는 나아간다아아아아아..."
-                />
-                <Say
-                    name="내면세계"
-                    speakerClass="psyche"
-                    level="[쉬움: 성공]"
-                    content="왜 우리는 이 세상을 등진채... 그저 떠나고, 또 떠나야만 하는거지?"
-                />
-                <Say
-                    name="어스름"
-                    speakerClass="physique"
-                    level="[쉬움: 성공]"
-                    content="온다. 죽음이"
-                />
-                <Say
-                    name="지각 (후각)"
-                    speakerClass="motorics"
-                    level="[하찮음: 성공]"
-                    content="당신이 발견한 껌 종이와 *정확히* 일치하는 냄새예요. 똑같은 껌인가 봐요..."
-                />
-                <Say
-                    name="CPU"
-                    speakerClass=""
-                    level=""
-                    content="어디로 가시겠습니까?"
-                />
-                <Question
-                    questions={["이력", "블로그", "프로젝트"]}
-                />
+                <App/>
             </div>
             <div className="disco-outline right"/>
         </div>
