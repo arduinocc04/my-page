@@ -74,6 +74,21 @@ html, body {
     height: inherit;
 }
 
+.say-div {
+    padding-left: 6%;
+    width: 94%;
+    justify-content: end;
+}
+
+.question-div {
+    padding-left: 6%;
+    width: 94%;
+    justify-content: end;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5vh;
+}
+
 .say {
     width: 100%;
     height: fit-content;
@@ -84,6 +99,44 @@ html, body {
     color: #CD4729;
 }
 
+.normal-q {
+    width: 100%;
+    height: fit-content;
+    font-weight: 900;
+    color: #CD4729;
+}
+
+.normal-q:hover {
+    color: white;
+}
+
+.red-try {
+    background-color: #CD4729;
+    color: black;
+    font-weight: 900;
+    margin-left: -1.5vw;
+    padding-left: 1.5vw;
+}
+
+.red-try .speaker {
+    color: black;
+}
+
+.red-try:hover {
+    color: white;
+}
+
+.white-try {
+    background-color: #AAAAAA;
+    color: black;
+    font-weight: 900;
+    margin-left: -1.5vw;
+    padding-left: 1.5vw;
+}
+
+.white-try:hover {
+    color: white;
+}
 
 .speaker {
     margin-left: -1vw;
@@ -113,4 +166,19 @@ html, body {
 
 .past {
     opacity: 0.5;
+}
+
+div .disco-block-btn {
+    background-color: #CD4729;
+    color: white;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    padding-left: 3vw;
+    font-weight: 900;
+    margin-left: -1vw;
+}
+
+/* to remove underline in buttons */
+.disco-dialogue a {
+    text-decoration: none;
 }
