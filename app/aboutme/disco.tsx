@@ -35,17 +35,22 @@ function addDialogues() {
     .say(tutor, [], "반갑습니다.", () => {}, "[하찮음: 성공]")
     .question(tutor, [], "어디로 가시겠습니까?", [
         {
-            content: "블로그",
-            type: AnswerType.redTry,
-            callback: () => {}
+            content: "홈",
+            type: AnswerType.whiteTry,
+            callback: () => {window.location.href = "/"}
         },
         {
-            content: "자기소개",
-            type: AnswerType.whiteTry,
-            callback: () => {}
+            content: "블로그",
+            type: AnswerType.redTry,
+            callback: () => {window.location.href = "/bloghome"}
         },
         {
             content: "프로젝트",
+            type: AnswerType.normal,
+            callback: () => {window.location.href = "/projecthome"}
+        },
+        {
+            content: "여어어어엉원히 이곳에 남아있는다.",
             type: AnswerType.normal,
             callback: () => {}
         }
