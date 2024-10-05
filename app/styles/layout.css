@@ -25,7 +25,6 @@ body {
     grid-row: 1;
     padding-left: 1.5%;
     padding-right: 1%;
-    padding-top: 5%;
     margin: 0;
 
     font-size: small;
@@ -70,8 +69,9 @@ body {
     }
 }
 
-.aboutme-flex {
+.yorha-flex {
     display: flex;
     gap: 3vh;
+    padding-top: 5vh;
     flex-direction: column;
 }
