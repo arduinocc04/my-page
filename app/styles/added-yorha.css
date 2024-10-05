@@ -35,3 +35,7 @@ h2 {
 li {
   font-size: 100%;
 }
+
+figcaption {
+  font-size: 150%;
+}
