@@ -57,7 +57,7 @@ export default function Home() {
   return (
     <main className="">
         <Dialogue />
-        <div className="aboutme-flex">
+        <div className="yorha-flex">
             <h1>정보</h1>
             <blockquote>
                 나아가자, 저 거친 창백 너머로. <br/>
