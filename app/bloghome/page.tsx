@@ -6,9 +6,7 @@ import "yorha/dist/yorha.css"
 import "../styles/added-yorha.css"
 import "../styles/layout.css"
 
-// import { OptionButton, PostButton } from './client';
-
-export function OptionButton({name, callback}: {name: string, callback: Function}) {
+function OptionButton({name, callback}: {name: string, callback: Function}) {
     return (
         <a href='javascript: void(0);'>
             <div className="optionbutton">
@@ -18,7 +16,7 @@ export function OptionButton({name, callback}: {name: string, callback: Function
     );
 }
 
-export function PostButton({name, link}: {name: string, link: string}) {
+function PostButton({name, link}: {name: string, link: string}) {
     return (
         <Link href={`/blog/${link}`}>
             <div className='postbutton'>
