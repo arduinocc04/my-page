@@ -23,6 +23,7 @@ a input:read-only {
 }
 
 h1 {
+  letter-spacing: 1px;
   font-size: 400%;
   margin: 0;
 }
@@ -38,4 +39,46 @@ li {
 
 figcaption {
   font-size: 150%;
+}
+
+a {
+  text-decoration: none;
+}
+
+.optionbutton {
+  background-color: #BAB5A1;
+  color: #272727;
+  width: 15vw;
+  font-size: 150%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.optionbutton:hover {
+  color: #BAB5A1;
+  background-color: #272727;
+}
+
+.postbutton {
+  background-color: #DCD8C0;
+  color: #272727;
+  width: 30vw;
+  height: fit-content;
+  font-size: 150%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.postbutton:hover {
+  color: #DCD8C0;
+  background-color: #272727;
+}
+
+.bloghome-flex blockquote {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: fit-content;
 }
