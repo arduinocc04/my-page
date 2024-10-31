@@ -3,6 +3,8 @@ import "yorha/dist/yorha.css"
 import "./styles/added-yorha.css"
 import "./styles/layout.css"
 
+import Dialogue from "./disco"
+
 function Tech ({name, link, content}: {name:string, link: string, content: string}) {
     return <figure>
         <figcaption>{name} <a href={link}>website</a> </figcaption>
@@ -17,6 +19,7 @@ function Tech ({name, link, content}: {name:string, link: string, content: strin
 export default function Home() {
   return (
     <main className="">
+        <Dialogue />
         <div className='yorha-flex'>
             <h1 className="">새로운 집</h1>
             <h2>사이트 제작 이유</h2>
