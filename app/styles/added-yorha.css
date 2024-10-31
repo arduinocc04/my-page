@@ -53,6 +53,8 @@ a {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  padding-top: 0.5vh;
+  padding-bottom: 0.5vh;
 }
 
 .optionbutton:hover {
@@ -69,6 +71,8 @@ a {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  padding-top: 0.5vh;
+  padding-bottom: 0.5vh;
 }
 
 .postbutton:hover {
@@ -81,4 +85,50 @@ a {
   flex-direction: column;
   justify-content: center;
   height: fit-content;
+}
+
+.subtitle {
+  text-shadow: none;
+  font-size: 50%;
+}
+
+.post-title {
+  color: #DCD8C0;
+  background-color: #272727;
+  width: inherit;
+  height: fit-content;
+  font-size: 150%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-top: 0.5vh;
+  padding-bottom: 0.5vh;
+}
+
+.post h1 {
+  text-shadow: none;
+  font-size: 200%;
+}
+
+.post-flex .postbutton {
+  background-color: #DCD8C0;
+  color: #272727;
+  width: 20vw;
+  height: fit-content;
+  font-size: 150%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-top: 0.5vh;
+  padding-bottom: 0.5vh;
+}
+
+.post-flex .postbutton:hover {
+  color: #DCD8C0;
+  background-color: #272727;
+}
+
+.post-flex blockquote {
+  margin-right: 0;
+  margin-left: 0;
 }
