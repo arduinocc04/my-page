@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import "yorha/dist/yorha.css"
-import "./styles/added-yorha.css"
-import "./styles/layout.css"
+import "../styles/added-yorha.css"
+import "../styles/layout.css"
 
-import Dialogue from "./disco"
+import Dialogue from "../disco"
 
 function Tech ({name, link, content}: {name:string, link: string, content: string}) {
     return <figure>

@@ -4,8 +4,8 @@ import {getPostHtml} from '../blog';
 import Link from 'next/link'
 
 import "yorha/dist/yorha.css"
-import "../../styles/added-yorha.css"
-import "../../styles/layout.css"
+import "../../../styles/added-yorha.css"
+import "../../../styles/layout.css"
 
 function PostButton({name, link}: {name: string, link: string}) {
   return (

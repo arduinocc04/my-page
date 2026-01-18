@@ -3,8 +3,8 @@ import Link from 'next/link'
 import YAML from 'yaml'
 import fs from 'fs'
 import "yorha/dist/yorha.css"
-import "../styles/added-yorha.css"
-import "../styles/layout.css"
+import "../../styles/added-yorha.css"
+import "../../styles/layout.css"
 
 import Dialogue from "./disco"
 import Script from 'next/script'
@@ -39,7 +39,7 @@ function Device({device}:{device: StringMap}) {
 }
 
 function parse_yaml(name:string) {
-    const file_contents = fs.readFileSync(process.cwd() + "/app/aboutme/" + name);
+    const file_contents = fs.readFileSync(process.cwd() + "/app/[locale]/aboutme/" + name);
     return YAML.parse(file_contents.toString());
 }
 

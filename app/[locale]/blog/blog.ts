@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import {Converter} from '../../showdown/dist/showdown';
+import {Converter} from '../../../showdown/dist/showdown';
 // import { parse, HtmlGenerator } from 'latex.js';
 // const {createHTMLWindow} = require('svgdom')
 
