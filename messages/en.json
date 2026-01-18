@@ -1,1 +1,15 @@
-{}
+{
+    "HomePage": {
+        "title": "Home",
+        "reason-why": "The reason why I made this",
+        "reasons": {
+            "0": "To introduce myself with the things I like",
+            "1": "To show my projects in interactable form",
+            "2": "To trace logs well when updating articles",
+            "3": "To upload LaTeX document directly to blog, in searchable manner"
+        },
+        "structure": "Structure of Website",
+        "structure-explained": "Left side is the game Nier:Automata's option panel, right side is the game Disco Elysium's conversation panel",
+        "used-techs": "Used Languages/Libraries/Technologies"
+    }
+}
