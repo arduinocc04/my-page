@@ -11,5 +11,41 @@
         "structure": "Structure of Website",
         "structure-explained": "Left side is the game Nier:Automata's option panel, right side is the game Disco Elysium's conversation panel",
         "used-techs": "Used Languages/Libraries/Technologies"
+    },
+    "aboutme": {
+        "info": "Informations",
+        "connecting": "Connecting",
+        "contacts": "Contacts",
+        "email": "Email",
+        "exp": "Experiences",
+        "interests": "Interests",
+        "inters": {
+            "Game": "Game",
+            "Movie": "Movie",
+            "Music": "Music",
+            "Reading": "Reading"
+        },
+        "lang": "Languages",
+        "langterms": {
+            "native": "native",
+            "proficient": "proficient",
+            "English": "English",
+            "Korean": "Korean",
+            "Japanese": "Japanese",
+            "EngQual": "New TEPS 400/600 (Taken in Feb 2023)"
+        },
+        "devices": "Devices",
+        "devname": {
+            "cpu": "CPU",
+            "ram": "RAM",
+            "mainboard": "Mainboard",
+            "gpu": "GPU",
+            "keyboard": "Keyboard",
+            "mouse": "Mouse",
+            "speaker": "Speaker",
+            "headphone": "Headphone",
+            "microphone": "Microphone",
+            "device": "Device"
+        }
     }
 }
