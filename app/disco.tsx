@@ -1,10 +1,28 @@
 "use client";
 
+import {routing} from '../i18n/routing';
+
 import { DiscoSystem, AnswerType, Speaker} from "@/component/DiscoSystem"
 
-function addDialogues() {
-    DiscoSystem.clear();
+function addLangDialogues(nowLocale:string, locales: readonly string[]) {
+    const langHelper:Speaker = {
+        name: 'langhelper',
+        type: ""
+    }
 
+    const nowLocaleIdx = locales.findIndex((x) => x == nowLocale);
+    const localesTmp = locales.slice(0, nowLocaleIdx).concat(locales.slice(nowLocaleIdx + 1));
+    DiscoSystem.say(langHelper, [], 'understood', () => {}, 'easy-success')
+    .question(langHelper, [], 'change-lang',
+        [{content: nowLocale, type: AnswerType.normal, callback: () => {}}].concat(localesTmp.map((locale:string) => ({
+            content: locale,
+            type: AnswerType.normal,
+            callback: () => {window.location.href = "/" + locale}
+        })))
+        , () => {}, 'easy-success')
+}
+
+function addDialogues() {
     const conceptualization:Speaker = {
         name: "개념화",
         type: "intellect"
@@ -72,6 +90,8 @@ function addDialogues() {
 }
 
 export default function Dialogue() {
+    DiscoSystem.clear();
+    addLangDialogues("en", routing.locales);
     addDialogues();
     return <div></div>;
 }

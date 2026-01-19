@@ -47,5 +47,18 @@
             "microphone": "마이크",
             "device": "기기"
         }
+    },
+    "disco": {
+        "langhelper": "언어 도우미",
+        "easy-success": "[하찮음: 성공]"
+    },
+    "discoSays": {
+        "understood": "이 언어를 이해하실 수 있으신가요?",
+        "change-lang": "언어를 변경하고 싶으신가요?"
+    },
+    "discoQuestions": {
+        "en": "영어, English",
+        "ko": "이대로 가겠습니다.",
+        "jp": "일본어, 日本語"
     }
 }

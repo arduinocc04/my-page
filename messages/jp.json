@@ -47,5 +47,18 @@
             "microphone": "Microphone",
             "device": "Device"
         }
+    },
+    "disco": {
+        "langhelper": "言語　ヘルパー",
+        "easy-success": "[安い: 成功]"
+    },
+    "discoSays": {
+        "understood": "この言語ができますか？",
+        "change-lang": "言語を変えて欲しいですか?"
+    },
+    "discoQuestions": {
+        "en": "英語、English",
+        "ko": "韓国語、한국어",
+        "jp": "この言語で続く"
     }
 }
