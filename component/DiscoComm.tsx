@@ -2,6 +2,7 @@
 import "./disco.css"
 import {discoInst, Say, Speaker, Question, Answer, AnswerType} from "../component/DiscoSystem"
 import React, { ReactNode } from 'react'
+import {useTranslations} from 'next-intl';
 
 interface SayType {
     speaker: Speaker,
@@ -17,18 +18,22 @@ interface QuestionsType {
 
 
 function SayDiv({speaker, level, content, past}: SayType) {
+    const t = useTranslations('disco');
+    const ts = useTranslations('discoSays');
     return (
         <div className={`say-div ${(past)?"past":""}`}>
             <span className="say">
-                <span className={`speaker ${speaker.type}`}>{speaker.name}</span>
-                <span className="say-level">&nbsp;{level}</span>
-                &nbsp;–&nbsp;{content}
+                <span className={`speaker ${speaker.type}`}>{t(speaker.name)}</span>
+                <span className="say-level">&nbsp;{t(level)}</span>
+                &nbsp;–&nbsp;{ts(content)}
             </span>
         </div>
     )
 }
 
 function Questions({questions, thiss}:QuestionsType) {
+    const t = useTranslations('disco');
+    const tq = useTranslations('discoQuestions');
     return (
         <div className="say-div">
             {
@@ -37,7 +42,7 @@ function Questions({questions, thiss}:QuestionsType) {
                         <div className={(question.type == AnswerType.normal)?"normal-q":(question.type == AnswerType.whiteTry)?"white-try":"red-try"}>
                             <span>
                                 <span className="speaker">{idx + 1}.&nbsp;–&nbsp;</span>
-                                {question.content}
+                                {tq(question.content)}
                             </span>
                         </div>
                     </a>

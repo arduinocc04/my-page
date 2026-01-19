@@ -3,18 +3,21 @@ import Link from 'next/link'
 import YAML from 'yaml'
 import fs from 'fs'
 import "yorha/dist/yorha.css"
-import "../styles/added-yorha.css"
-import "../styles/layout.css"
+import "../../styles/added-yorha.css"
+import "../../styles/layout.css"
 
 import Dialogue from "./disco"
 import Script from 'next/script'
 
+import {useTranslations} from 'next-intl';
 
 type StringMap = {
     [key: string] : string
 };
 
 function Device({device}:{device: StringMap}) {
+    const t = useTranslations('aboutme');
+
     var keys:Array<string> = [];
     const black_keys = new Set(["system", "name", "type"]);
     for(let key in device) {
@@ -30,7 +33,7 @@ function Device({device}:{device: StringMap}) {
                 <p>{device["system"]}</p>
                 {
                     keys.map((key) => (
-                        <p key={key}>{key}: {device[key]}</p>
+                        <p key={key}>{t("devname." + key)}: {device[key]}</p>
                     ))
                 }
             </div>
@@ -39,7 +42,7 @@ function Device({device}:{device: StringMap}) {
 }
 
 function parse_yaml(name:string) {
-    const file_contents = fs.readFileSync(process.cwd() + "/app/aboutme/" + name);
+    const file_contents = fs.readFileSync(process.cwd() + "/app/[locale]/aboutme/" + name);
     return YAML.parse(file_contents.toString());
 }
 
@@ -54,22 +57,24 @@ export default function Home() {
   const mail = contact_raw["mail"];
   const sites = contact_raw["sites"];
 
+  const t = useTranslations('aboutme');
+
   return (
     <main className="">
         <Dialogue />
         <div className="yorha-flex">
-            <h1>정보</h1>
+            <h1>{t('info')}</h1>
             <blockquote>
                 나아가자, 저 거친 창백 너머로. <br/>
                 Off we go into the wild pale yonder
             </blockquote>
-            <h2>연락</h2>
+            <h2>{t('connecting')}</h2>
             <form>
                 <fieldset>
-                    <legend>연락처</legend>
+                    <legend>{t('contacts')}</legend>
                     <p>
                         <label htmlFor="text">
-                            이메일 &nbsp;
+                            {t('email')} &nbsp;
                             <a href={mail["pgp_link"]}>PGP</a>
                         </label>
                         <br/>
@@ -90,26 +95,26 @@ export default function Home() {
                     }
                 </fieldset>
             </form>
-            <h2>이력</h2>
-            <h2>관심사</h2>
+            <h2>{t('exp')}</h2>
+            <h2>{t('interests')}</h2>
             <ul>
                 {
                     interests.map((interest:string) => (
-                        <li key={interest} >{interest}</li>
+                        <li key={interest} >{t("inters." + interest)}</li>
                     ))
                 }
             </ul>
-            <h2>언어</h2>
+            <h2>{t('lang')}</h2>
             {
                 languages.map((lang:StringMap) => (
                     <figure key={lang["name"]}>
-                        <figcaption>{lang["name"]}</figcaption>
-                        <p>{lang["level"]}</p>
-                        {lang["qualification"] && <p>{lang["qualification"]}</p>}
+                        <figcaption>{t("langterms." + lang["name"])}</figcaption>
+                        <p>{t("langterms." + lang["level"])}</p>
+                        {lang["qualification"] && <p>{t("langterms." + lang["qualification"])}</p>}
                     </figure>
                 ))
             }
-            <h2>기기</h2>
+            <h2>{t('devices')}</h2>
             {
                 devices.map((device:StringMap) => (
                     <Device

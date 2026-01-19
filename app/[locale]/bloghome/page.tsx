@@ -3,8 +3,8 @@ import Link from 'next/link'
 import {PostProps, getAllPostInfos} from './post'
 
 import "yorha/dist/yorha.css"
-import "../styles/added-yorha.css"
-import "../styles/layout.css"
+import "../../styles/added-yorha.css"
+import "../../styles/layout.css"
 
 function OptionButton({name, callback}: {name: string, callback: Function}) {
     return (
